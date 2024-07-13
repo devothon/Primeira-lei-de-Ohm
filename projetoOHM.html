@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Função para obter a entrada do usuário com prompts e calcular o valor faltante
+    function calculateOhm() {
+    // Solicita a entrada do usuário para os valores
+    let voltage = prompt("Digite a tensão (V) ou deixe em branco se não souber:");
+    let current = prompt("Digite a corrente (A) ou deixe em branco se não souber:");
+    let resistance = prompt("Digite a resistência (Ω) ou deixe em branco se não souber:");
+
+    // Converte as entradas em números
+    voltage = voltage ? parseFloat(voltage) : undefined;
+    current = current ? parseFloat(current) : undefined;
+    resistance = resistance ? parseFloat(resistance) : undefined;
+
+    // Calcula o valor que falta
+    let result;
+    if (voltage === undefined) {
+        if (current !== undefined && resistance !== undefined) {
+            result = current * resistance;
+            console.log(`Tensão (V) = ${result.toFixed(2)} V`);
+        } else {
+            console.log("Para calcular a tensão, insira a corrente e a resistência.");
+        }
+    } else if (current === undefined) {
+        if (voltage !== undefined && resistance !== undefined) {
+            result = voltage / resistance;
+            console.log(`Corrente (I) = ${result.toFixed(2)} A`);
+        } else {
+            console.log("Para calcular a corrente, insira a tensão e a resistência.");
+        }
+    } else if (resistance === undefined) {
+        if (voltage !== undefined && current !== undefined) {
+            result = voltage / current;
+            console.log(`Resistência (R) = ${result.toFixed(2)} Ω`);
+        } else {
+            console.log("Para calcular a resistência, insira a tensão e a corrente.");
+        }
+    } else {
+        console.log("Por favor, insira apenas dois valores. O terceiro será calculado.");
+    }
+}
+
+// Executa a função
+calculateOhm();
+
+    </script>
+</body>
+</html>
